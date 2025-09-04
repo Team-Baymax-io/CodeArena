@@ -16,8 +16,5 @@ app.use(express.static("public"));
 app.use(cookieParser());
 
 //routes
-app.get("/", (req, res) => {
-  res.send("Home Route !");
-});
 
 export { app };
