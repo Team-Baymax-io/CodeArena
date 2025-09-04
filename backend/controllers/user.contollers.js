@@ -15,13 +15,14 @@ const generateAccessToken = async (userId) => {
   }
 };
 
-export const registerUser = asyncHandler(async (req, res) => {
+const registerUser = asyncHandler(async (req, res) => {
   const { name, email, password } = req.body;
 
   try {
     const existedUser = await User.findOne({ email });
+
     if (existedUser) {
-      return new ApiError(409, "User already exists");
+      throw new ApiError(409, "User already exists");
     }
 
     const user = await User.create({
@@ -33,25 +34,38 @@ export const registerUser = asyncHandler(async (req, res) => {
     const createdUser = await User.findById(user._id).select("-password ");
 
     if (!createdUser) {
-      return new ApiError(500, "User creation failed");
+      throw new ApiError(500, "User creation failed");
     }
 
+    // ✅ Generate access token
+    const { accessToken } = await generateAccessToken(createdUser._id);
+
+    const options = { httpOnly: true, secure: true };
+
     return res
-      .status(200)
-      .json(new ApiResponse(200, "User created successfully", createdUser));
+      .status(201)
+      .cookie("accessToken", accessToken, options)
+      .json(
+        new ApiResponse(
+          201,
+          { user: createdUser, accessToken },
+          "User registered successfully"
+        )
+      );
   } catch (error) {
-    throw new ApiError(400, "Register failed");
+    // console.log(error.message);
+    throw new ApiError(400, error.message);
   }
 });
 
 //login user
-export const loginUser = asyncHandler(async (req, res) => {
+const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
-  if (!(email || username)) {
+  if (!email) {
     throw new ApiError(400, "Please provide email or username ");
   }
 
-  const user = await User.findOne({ $or: [{ email }, { username }] });
+  const user = await User.findOne({ email });
 
   if (!user) {
     throw new ApiError(404, "User not found");
@@ -111,7 +125,7 @@ const changeCurrentPassword = asyncHandler(async (req, res) => {
   const { oldPassword, newPassword } = req.body;
 
   const user = await User.findById(req.user?._id);
-  const isPasswordCorrect = user.isPasswordCorrect(oldPassword);
+  const isPasswordCorrect = await user.isPasswordCorrect(oldPassword);
   if (!isPasswordCorrect) {
     throw new ApiError(400, "Wrong old Password");
   }
@@ -126,9 +140,15 @@ const changeCurrentPassword = asyncHandler(async (req, res) => {
 
 //get user
 const getCurrentUser = asyncHandler((req, res) => {
-  return res
-    .status(200)
-    .json(new ApiResponse(200, {}, "current user fetched successfully"));
+  try {
+    return res
+      .status(200)
+      .json(
+        new ApiResponse(200, req.user, "current user fetched successfully")
+      );
+  } catch (error) {
+    throw new ApiError(404, " error occured while fetching user ");
+  }
 });
 
 export {
