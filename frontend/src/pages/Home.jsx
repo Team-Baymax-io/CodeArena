@@ -1,12 +1,12 @@
 import React from "react";
-import { Header, Footer, Hero, Features, Product } from "../components/index";
+import { Header, Footer, Hero, Feature, Product } from "../components/index";
 
 const Home = () => {
   return (
     <>
       <Header />
       <Hero />
-      <Features />
+      <Feature />
       <Product />
       <Footer />
     </>

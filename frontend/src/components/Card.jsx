@@ -1,4 +1,4 @@
-export const Card = () => {
+export default Card = () => {
   const [visible, setVisible] = React.useState(false);
   const [position, setPosition] = React.useState({ x: 0, y: 0 });
   const divRef = React.useRef(null);

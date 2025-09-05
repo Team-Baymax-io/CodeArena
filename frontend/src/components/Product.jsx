@@ -1,6 +1,7 @@
 import React from "react";
+import ProductItem from "./ProductItem";
 
-export const Product = () => {
+export default function Product() {
   return (
     <div>
       <section className="py-16 bg-gradient-to-r from-blue-50 to-green-50 rounded-3xl">
@@ -23,4 +24,4 @@ export const Product = () => {
       </section>
     </div>
   );
-};
+}

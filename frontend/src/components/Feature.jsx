@@ -1,6 +1,7 @@
 import React from "react";
+import FeatureCard from "./Featurecard";
 
-export const Feature = () => {
+export default function Feature() {
   return (
     <div>
       {/* Features Section */}
@@ -30,4 +31,4 @@ export const Feature = () => {
       </section>
     </div>
   );
-};
+}

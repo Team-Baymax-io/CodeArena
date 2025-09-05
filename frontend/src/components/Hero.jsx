@@ -1,43 +1,25 @@
 import React from "react";
+import FeatureCard from "./Featurecard";
 
 function Hero() {
   return (
     <>
       {/* Hero Section */}
-      <section className="hero">
-        <div className="container">
-          <h1>NEW FUTURE of Healthcare is coming now.</h1>
-          <p>
+      <section className="hero bg-gradient-to-r from-blue-50 to-green-50 h-screen flex items-center">
+        <div className="container mx-auto px-6 text-center">
+          <h1 className="text-4xl md:text-6xl font-extrabold text-blue-800 mb-6 leading-tight">
+            NEW FUTURE of Healthcare is coming now.
+          </h1>
+          <p className="text-lg md:text-xl text-gray-700 max-w-2xl mx-auto mb-8">
             Discover innovative medical technologies that are transforming
             patient care and improving outcomes worldwide.
           </p>
-          <a href="#" className="cta-button">
+          <a
+            href="#"
+            className="inline-block px-6 py-3 text-lg font-semibold rounded-lg shadow-md bg-blue-600 text-white hover:bg-blue-700 transition"
+          >
             Show me the Future
           </a>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="features">
-        <div className="container">
-          <h2 className="section-title">Our Innovative Solutions</h2>
-          <div className="features-grid">
-            <FeatureCard
-              icon="📱"
-              title="Smart Monitoring"
-              description="Real-time health monitoring with advanced sensors and AI-powered analytics for proactive care."
-            />
-            <FeatureCard
-              icon="💉"
-              title="Precision Delivery"
-              description="Advanced drug delivery systems that ensure accurate dosing and optimal treatment outcomes."
-            />
-            <FeatureCard
-              icon="📊"
-              title="Data Analytics"
-              description="Comprehensive health data analysis to identify trends and provide personalized treatment plans."
-            />
-          </div>
         </div>
       </section>
     </>
