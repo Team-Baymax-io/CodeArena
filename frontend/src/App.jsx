@@ -5,15 +5,6 @@ import Home from "./components/Home";
 
 function App() {
   return (
-    <>
-      <Home />
-    </>
-  );
-}
-import Home from "./components/Home";
-
-function App() {
-  return (
     <div className="flex h-screen w-screen">
       <Routes>
         <Route path="/" element={<Home />} />
