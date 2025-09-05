@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Dashboard() {
@@ -6,9 +5,7 @@ export default function Dashboard() {
     <div className="min-h-screen bg-gray-100 flex flex-col">
       {/* Top Navbar */}
       <header className="bg-white shadow-md py-4 px-6 flex justify-between items-center">
-        <h1 className="text-2xl font-bold text-blue-700">
-          HealthFuture Dashboard
-        </h1>
+        <h1 className="text-2xl font-bold text-blue-700">Dashboard</h1>
         <nav>
           <ul className="flex space-x-6 text-gray-700 font-medium">
             <li>

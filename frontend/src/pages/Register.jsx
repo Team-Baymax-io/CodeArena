@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import api from "../lib/api"; // axios instance
+import API from "../lib/api"; // axios instance
 import { useAuth } from "../context/authContext";
 
 export default function Register() {
@@ -24,7 +24,7 @@ export default function Register() {
     setError("");
 
     try {
-      const res = await api.post("/auth/register", form);
+      const res = await API.post("/user/register", form);
       dispatch({ type: "LOGIN", payload: res.data }); // Auto login after signup
       navigate("/dashboard");
     } catch (err) {

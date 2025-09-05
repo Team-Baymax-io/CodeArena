@@ -1,5 +1,4 @@
-import React from "react";
-import FeatureCard from "./FeatureCard";
+import { Link } from "react-router-dom";
 
 function Hero() {
   return (
@@ -14,12 +13,12 @@ function Hero() {
             Discover innovative medical technologies that are transforming
             patient care and improving outcomes worldwide.
           </p>
-          <a
-            href="#"
+          <Link
+            to="/Technology"
             className="inline-block px-6 py-3 text-lg font-semibold rounded-lg shadow-md bg-blue-600 text-white hover:bg-blue-700 transition"
           >
             Show me the Future
-          </a>
+          </Link>
         </div>
       </section>
     </>

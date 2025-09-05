@@ -55,7 +55,7 @@ export default function Contact() {
             </p>
             <p>
               ✉️ <span className="font-semibold">Email:</span>{" "}
-              support@healthfuture.com
+              support@baymax.io.com
             </p>
           </div>
         </div>
