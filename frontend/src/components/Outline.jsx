@@ -1,10 +1,11 @@
 import Header from "./Header";
 import Footer from "./Footer";
 
-const Outline = () => {
+const Outline = ({ children }) => {
   return (
     <>
       <Header />
+      {children}
       <Footer />
     </>
   );

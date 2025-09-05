@@ -6,6 +6,8 @@ import Product from "./Product";
 import ProductItem from "./ProductItem";
 import FeatureCard from "./FeatureCard";
 import Error from "./404Error";
+import Button from "./Button";
+import Outline from "./Outline";
 
 export {
   Header,
@@ -16,4 +18,6 @@ export {
   Product,
   ProductItem,
   Error,
+  Button,
+  Outline,
 };

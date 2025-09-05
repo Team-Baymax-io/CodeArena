@@ -1,8 +1,10 @@
-import React from 'react'
+import React from "react";
+import Button from "./index";
 
-const header = () => {
+export const Header = () => {
   return (
-    <div>export default header {/* Header Section */}
+    <div>
+      {/* Header Section */}
       <header className="bg-gradient-to-r from-blue-50 to-green-50 py-5 shadow-md">
         <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
           <div className="text-2xl md:text-3xl font-bold text-blue-700 mb-4 md:mb-0">
@@ -24,8 +26,14 @@ const header = () => {
               )}
             </ul>
           </nav>
+          <Link path="/login">
+            <Button children={Login} />
+          </Link>
+          <Link path="/register">
+            <Button children={Register} />
+          </Link>
         </div>
-      </header></div>
-  )
-}
-
+      </header>
+    </div>
+  );
+};
