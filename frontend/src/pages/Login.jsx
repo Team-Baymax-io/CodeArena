@@ -1,76 +1,98 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/authContext";
 
 export default function Login() {
+  const { dispatch } = useAuth();
+  const navigate = useNavigate();
+
+  const [form, setForm] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError("");
+
+    try {
+      // 🚨 Replace with your backend API
+      const res = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        throw new Error(data.message || "Login failed");
+      }
+
+      // ✅ update AuthContext
+      dispatch({
+        type: "LOGIN",
+        payload: { user: data.user, token: data.token },
+      });
+
+      navigate("/dashboard"); // redirect
+    } catch (err) {
+      setError(err.message);
+    }
+  };
+
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <form className="max-w-96 w-full text-center border border-gray-300/60 rounded-2xl px-8 bg-white">
-        <h1 className="text-gray-900 text-3xl mt-10 font-medium">Login</h1>
-        <p className="text-gray-500 text-sm mt-2">Please sign in to continue</p>
-        <div className="flex items-center w-full mt-10 bg-white border border-gray-300/80 h-12 rounded-full overflow-hidden pl-6 gap-2">
-          <svg
-            width="16"
-            height="11"
-            viewBox="0 0 16 11"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fillRule="evenodd"
-              clipRule="evenodd"
-              d="M0 .55.571 0H15.43l.57.55v9.9l-.571.55H.57L0 10.45zm1.143 1.138V9.9h13.714V1.69l-6.503 4.8h-.697zM13.749 1.1H2.25L8 5.356z"
-              fill="#6B7280"
-            />
-          </svg>
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-r from-green-50 to-blue-50">
+      <div className="bg-white shadow-lg rounded-xl p-8 w-full max-w-md">
+        <h1 className="text-2xl font-bold text-center text-blue-700 mb-6">
+          Login to Your Account
+        </h1>
+
+        {error && (
+          <p className="text-red-500 text-center mb-4 text-sm">{error}</p>
+        )}
+
+        <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="email"
-            placeholder="Email id"
-            className="bg-transparent text-gray-500 placeholder-gray-500 outline-none text-sm w-full h-full"
+            name="email"
+            placeholder="Email Address"
+            value={form.email}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             required
           />
-        </div>
 
-        <div className="flex items-center mt-4 w-full bg-white border border-gray-300/80 h-12 rounded-full overflow-hidden pl-6 gap-2">
-          <svg
-            width="13"
-            height="17"
-            viewBox="0 0 13 17"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M13 8.5c0-.938-.729-1.7-1.625-1.7h-.812V4.25C10.563 1.907 8.74 0 6.5 0S2.438 1.907 2.438 4.25V6.8h-.813C.729 6.8 0 7.562 0 8.5v6.8c0 .938.729 1.7 1.625 1.7h9.75c.896 0 1.625-.762 1.625-1.7zM4.063 4.25c0-1.406 1.093-2.55 2.437-2.55s2.438 1.144 2.438 2.55V6.8H4.061z"
-              fill="#6B7280"
-            />
-          </svg>
           <input
             type="password"
+            name="password"
             placeholder="Password"
-            className="bg-transparent text-gray-500 placeholder-gray-500 outline-none text-sm w-full h-full"
+            value={form.password}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
             required
           />
-        </div>
-        <div className="mt-5 text-left text-indigo-500">
-          <a className="text-sm" href="#">
-            Forgot password?
-          </a>
-        </div>
 
-        <button
-          type="submit"
-          className="mt-2 w-full h-11 rounded-full text-white bg-indigo-500 hover:opacity-90 transition-opacity"
-        >
-          Login
-        </button>
-        <p className="text-gray-500 text-sm mt-3 mb-11">
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white font-semibold py-2 rounded-md hover:bg-blue-700 transition"
+          >
+            Login
+          </button>
+        </form>
+
+        <p className="text-sm text-gray-600 text-center mt-4">
           Don’t have an account?{" "}
           <Link
-            className="text-blue-600 font-semibold hover:underline"
             to="/register"
+            className="text-blue-600 font-semibold hover:underline"
           >
-            Register
+            Sign Up
           </Link>
         </p>
-      </form>
+      </div>
     </div>
   );
 }

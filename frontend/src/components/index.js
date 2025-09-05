@@ -8,6 +8,7 @@ import FeatureCard from "./FeatureCard";
 import Error from "./404Error";
 import Button from "./Button";
 import Outline from "./Outline";
+import SearchBar from "./SearchBar";
 
 export {
   Header,
@@ -20,4 +21,5 @@ export {
   Error,
   Button,
   Outline,
+  SearchBar,
 };

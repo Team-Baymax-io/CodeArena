@@ -4,11 +4,9 @@ import { Header, Footer, Hero, Feature, Product } from "../components/index";
 const Home = () => {
   return (
     <>
-      <Header />
       <Hero />
       <Feature />
       <Product />
-      <Footer />
     </>
   );
 };

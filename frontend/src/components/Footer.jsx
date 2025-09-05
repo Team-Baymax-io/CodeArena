@@ -17,8 +17,8 @@ export default function Footer() {
               </div>
               <div className="flex-1 min-w-[250px]">
                 <h3 className="text-xl font-semibold mb-4">Contact Us</h3>
-                <p className="text-blue-100">Email: info@healthfuture.com</p>
-                <p className="text-blue-100">Phone: +1 (800) 123-4567</p>
+                <p className="text-blue-100">Email: info@baymax.com</p>
+                <p className="text-blue-100">Phone: +91 (800) 123-4567</p>
               </div>
               <div className="flex-1 min-w-[250px]">
                 <h3 className="text-xl font-semibold mb-4">Subscribe</h3>
@@ -28,7 +28,9 @@ export default function Footer() {
               </div>
             </div>
             <div className="pt-8 border-t border-blue-500 text-center">
-              <p>&copy; 2023 HealthFuture. All rights reserved.</p>
+              <p>
+                © {new Date().getFullYear()} BayMax.io. All rights reserved.
+              </p>
             </div>
           </div>
         </footer>

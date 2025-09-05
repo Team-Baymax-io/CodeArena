@@ -1,13 +1,20 @@
-import { Header, Footer } from "./index";
+import { Outlet } from "react-router-dom";
+import Header from "./Header";
+import Footer from "./Footer";
 
-const Outline = ({ children }) => {
+export default function Outline() {
   return (
-    <>
+    <div className="flex flex-col min-h-screen">
+      {/* Header stays fixed */}
       <Header />
-      {children}
-      <Footer />
-    </>
-  );
-};
 
-export default Outline;
+      {/* Main content injected here */}
+      <main className="flex-grow pt-20">
+        <Outlet />
+      </main>
+
+      {/* Footer stays fixed */}
+      <Footer />
+    </div>
+  );
+}

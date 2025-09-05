@@ -1,5 +1,5 @@
 import React from "react";
-import FeatureCard from "./Featurecard";
+import FeatureCard from "./FeatureCard";
 
 export default function Feature() {
   return (
