@@ -60,6 +60,10 @@ const registerUser = asyncHandler(async (req, res) => {
 
 //login user
 const loginUser = asyncHandler(async (req, res) => {
+  // console.log("res.json type:", typeof res.json);
+  // console.log("res keys:", Object.keys(res));
+  // console.log("✅ loginUser reached");
+
   const { email, password } = req.body;
   if (!email) {
     throw new ApiError(400, "Please provide email or username ");
@@ -79,24 +83,21 @@ const loginUser = asyncHandler(async (req, res) => {
 
   const { accessToken } = await generateAccessToken(user._id);
 
-  const loggedInUser = await User.findById(user._id).select("-password ");
+  const loggedInUser = await User.findById(user._id).select("-password");
 
   const options = {
     httpOnly: true,
     secure: true,
   };
+  // console.log("res.json right before return:", typeof res.json);
 
   return res
     .status(200)
-    .cookie("accessToken", accessToken, options)
     .json(
       new ApiResponse(
         200,
-        {
-          user: loggedInUser,
-          accessToken,
-        },
-        "User logged in successfully "
+        { user: loggedInUser, accessToken },
+        "User logged in successfully"
       )
     );
 });

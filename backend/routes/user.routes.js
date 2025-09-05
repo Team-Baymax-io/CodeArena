@@ -11,9 +11,9 @@ const userRouter = Router();
 
 //unprotected routes
 userRouter.route("/register").post(registerUser);
+userRouter.route("/login").post(loginUser);
 
 //protected routes
-userRouter.route("/login").post(verifyJWT, loginUser);
 userRouter.route("/get-user").get(verifyJWT, getCurrentUser);
 userRouter.route("/change-pass").post(verifyJWT, changeCurrentPassword);
 

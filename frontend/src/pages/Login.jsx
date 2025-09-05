@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../context/authContext";
+import API from "../lib/api";
+import { toast } from "react-hot-toast";
 
 export default function Login() {
   const { dispatch } = useAuth();
@@ -19,27 +21,24 @@ export default function Login() {
 
     try {
       // 🚨 Replace with your backend API
-      const res = await fetch("/api/auth/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(form),
-      });
-
-      const data = await res.json();
-
-      if (!res.ok) {
-        throw new Error(data.message || "Login failed");
-      }
+      const response = await API.post("/user/login", form);
+      const data = response.data;
 
       // ✅ update AuthContext
       dispatch({
         type: "LOGIN",
-        payload: { user: data.user, token: data.token },
+        payload: {
+          user: data.data.user,
+          token: data.data.accessToken,
+        },
       });
-
+      toast.success("User Logged in successfully");
       navigate("/dashboard"); // redirect
     } catch (err) {
-      setError(err.message);
+      const msg =
+        err.response?.data?.message || "Login failed. Please try again.";
+      setError(msg);
+      toast.error(msg);
     }
   };
 
@@ -49,10 +48,6 @@ export default function Login() {
         <h1 className="text-2xl font-bold text-center text-blue-700 mb-6">
           Login to Your Account
         </h1>
-
-        {error && (
-          <p className="text-red-500 text-center mb-4 text-sm">{error}</p>
-        )}
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <input
