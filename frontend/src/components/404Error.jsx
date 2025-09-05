@@ -1,4 +1,4 @@
-export default function Example() {
+export default function Error() {
   return (
     <div className="flex flex-col items-center justify-center text-sm max-md:px-4">
       <h1 className="text-8xl md:text-9xl font-bold text-indigo-500">404</h1>

@@ -1,4 +1,15 @@
 import "./App.css";
+import Login from "./components/Login";
+import Error from "./components/404Error";
+import Home from "./components/Home";
+
+function App() {
+  return (
+    <>
+      <Home />
+    </>
+  );
+}
 import Home from "./components/Home";
 
 function App() {
