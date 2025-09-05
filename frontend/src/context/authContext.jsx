@@ -3,7 +3,7 @@ import { createContext, useReducer, useContext } from "react";
 const AuthContext = createContext();
 
 const initialState = {
-  user: null,
+  user: JSON.parse(localStorage.getItem("user")) || null,
   token: localStorage.getItem("token") || null,
 };
 
@@ -11,6 +11,7 @@ function authReducer(state, action) {
   switch (action.type) {
     case "LOGIN":
       localStorage.setItem("token", action.payload.token);
+      localStorage.setItem("user", JSON.stringify(action.payload.user));
       return {
         ...state,
         user: action.payload.user,
@@ -18,6 +19,7 @@ function authReducer(state, action) {
       };
     case "LOGOUT":
       localStorage.removeItem("token");
+      localStorage.removeItem("user");
       return { user: null, token: null };
     default:
       return state;

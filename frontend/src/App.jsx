@@ -4,7 +4,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import Home from "./pages/Home";
-import { Error, Outline } from "./components";
+import { Error, Outline, Feature, Product } from "./components";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 
@@ -18,21 +18,24 @@ export default function App() {
     <AuthProvider>
       <Routes>
         <Route path="/" element={<Outline />}>
-          <Route index element={<Home />} />
+          <Route path="Home" element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="about" element={<About />} />
+          <Route path="Technology" element={<Feature />} />
+          <Route path="Products" element={<Product />} />
+          <Route path="Contact" element={<Contact />} />
+          <Route path="About" element={<About />} />
           <Route path="*" element={<Error />} />
+
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
         </Route>
-        <Route
-          path="/dashboard"
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        />
       </Routes>
     </AuthProvider>
   );
