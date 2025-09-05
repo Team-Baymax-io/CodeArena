@@ -1,17 +1,30 @@
-import "./App.css";
-import Login from "./components/Login";
-import Error from "./components/404Error";
-import Home from "./components/Home";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { AuthProvider, useAuth } from "./context/authContext";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
-function App() {
-  return (
-    <div className="flex h-screen w-screen">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    </div>
-  );
+function PrivateRoute({ children }) {
+  const { state } = useAuth();
+  return state.token ? children : <Navigate to="/login" />;
 }
 
-export default App;
+export default function App() {
+  return (
+    <AuthProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route
+            path="/dashboard"
+            element={
+              <PrivateRoute>
+                <Dashboard />
+              </PrivateRoute>
+            }
+          />
+        </Routes>
+      </BrowserRouter>
+    </AuthProvider>
+  );
+}
