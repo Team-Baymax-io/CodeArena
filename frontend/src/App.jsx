@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, Form } from "react-router-dom";
 import { AuthProvider, useAuth } from "./context/authContext";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import { Error, Outline, Feature, Product } from "./components";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
+import FormCard from "./pages/FormCard";
 
 function PrivateRoute({ children }) {
   const { state } = useAuth();
@@ -18,13 +19,14 @@ export default function App() {
     <AuthProvider>
       <Routes>
         <Route path="/" element={<Outline />}>
-          <Route path="Home" element={<Home />} />
+          <Route path="/" element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="Technology" element={<Feature />} />
           <Route path="Products" element={<Product />} />
           <Route path="Contact" element={<Contact />} />
           <Route path="About" element={<About />} />
+          <Route path="Form" element={<FormCard />} />
           <Route path="*" element={<Error />} />
 
           <Route

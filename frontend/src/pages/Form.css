@@ -1,0 +1,390 @@
+/* Form.css */
+body {
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: #f9fcfb; /* light background */
+  color: #333;
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.app-header h1 {
+  color: #2563eb; /* light blue */
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.progress-container {
+  width: 100%;
+  max-width: 600px;
+  background: #e0f2fe; /* pale blue */
+  border-radius: 10px;
+  height: 12px;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.progress-bar {
+  height: 12px;
+  background: #34d399; /* light green */
+  border-radius: 10px;
+  transition: width 0.3s ease;
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  color: #2563eb;
+  margin-top: 0.5rem;
+  display: block;
+  text-align: right;
+}
+
+.form-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 600px;
+}
+
+/* DietDigestion.css  */
+.form-section {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2563eb; /* light blue */
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #374151;
+}
+
+.form-select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background: #f9fcfb;
+  font-size: 1rem;
+  color: #333;
+}
+
+.form-select:focus {
+  border-color: #34d399; /* light green */
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.3);
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+input[type="checkbox"] {
+  accent-color: #34d399; /* light green */
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s ease;
+}
+
+.btn-primary {
+  background: #34d399; /* light green */
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #059669;
+}
+
+.btn-secondary {
+  background: #e0f2fe; /* pale blue */
+  color: #2563eb;
+}
+
+.btn-secondary:hover {
+  background: #bfdbfe;
+}
+
+/* EnviromentLifeStyle.css */
+.form-section {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2563eb; /* light blue */
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #374151;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background: #f9fcfb;
+  font-size: 1rem;
+  color: #333;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #34d399; /* light green */
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.3);
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s ease;
+}
+
+.btn-primary {
+  background: #34d399; /* light green */
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #059669;
+}
+
+.btn-secondary {
+  background: #e0f2fe; /* pale blue */
+  color: #2563eb;
+}
+
+.btn-secondary:hover {
+  background: #bfdbfe;
+}
+
+HabitaMovement.css .form-section {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #2563eb; /* light blue */
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  color: #374151;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background: #f9fcfb;
+  font-size: 1rem;
+  color: #333;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: #34d399; /* light green */
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.3);
+}
+
+.button-row {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s ease;
+}
+
+.btn-primary {
+  background: #34d399; /* light green */
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #059669;
+}
+
+.btn-secondary {
+  background: #e0f2fe; /* pale blue */
+  color: #2563eb;
+}
+
+.btn-secondary:hover {
+  background: #bfdbfe;
+}
+
+/* PesonalContitution.css  */
+.form-section {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.form-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #2563eb; /* light blue */
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+  color: #374151;
+}
+
+.checkbox-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+.checkbox-group input {
+  margin-right: 0.5rem;
+}
+
+.form-select {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  background: #f9fcfb;
+  font-size: 1rem;
+  color: #333;
+}
+
+.form-select:focus {
+  border-color: #34d399; /* light green */
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(52, 211, 153, 0.3);
+}
+
+.button-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  transition: background 0.2s ease;
+}
+
+.btn-primary {
+  background: #34d399; /* light green */
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #059669;
+}
