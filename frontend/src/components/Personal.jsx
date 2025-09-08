@@ -34,133 +34,112 @@ function PersonalConstitution({ formData, nextStep, handleDataUpdate }) {
     nextStep();
   };
 
+  const bodyTypes = [
+    {
+      value: "Vata",
+      label: "Thin body type, quick-moving, often feels cold (Vata)",
+    },
+    {
+      value: "Pitta",
+      label: "Medium build, strong digestion, gets irritated easily (Pitta)",
+    },
+    {
+      value: "Kapha",
+      label: "Solid build, calm nature, slow metabolism (Kapha)",
+    },
+  ];
+
+  const energyOptions = [
+    "High and steady",
+    "Energetic in bursts",
+    "Low and sluggish",
+    "Unpredictable",
+  ];
+
+  const concernsOptions = [
+    "Digestive issues",
+    "Poor sleep",
+    "Stress",
+    "Weight management",
+    "Skin issues",
+    "Frequent colds",
+  ];
+
   return (
-    <div>
-      <h2>🧬 Personal Constitution & Health</h2>
+    <div className="p-6 bg-white shadow-md rounded-2xl border border-gray-200">
+      <h2 className="text-2xl font-semibold text-blue-700 mb-6">
+        🧬 Personal Constitution & Health
+      </h2>
 
-      <label>Body Type (Select all that apply):</label>
-      <br />
-      <label>
-        <input
-          type="checkbox"
-          name="bodyType"
-          value="Vata"
-          checked={localData.bodyType.includes("Vata")}
-          onChange={handleChange}
-        />{" "}
-        Thin body type, quick-moving, often feels cold (Vata)
-      </label>
-      <br />
-      <label>
-        <input
-          type="checkbox"
-          name="bodyType"
-          value="Pitta"
-          checked={localData.bodyType.includes("Pitta")}
-          onChange={handleChange}
-        />{" "}
-        Medium build, strong digestion, gets irritated easily (Pitta)
-      </label>
-      <br />
-      <label>
-        <input
-          type="checkbox"
-          name="bodyType"
-          value="Kapha"
-          checked={localData.bodyType.includes("Kapha")}
-          onChange={handleChange}
-        />{" "}
-        Solid build, calm nature, slow metabolism (Kapha)
-      </label>
-      <br />
+      {/* Body Type */}
+      <div className="mb-4">
+        <label className="block font-medium text-gray-700 mb-2">
+          Body Type (Select all that apply):
+        </label>
+        {bodyTypes.map((item) => (
+          <label key={item.value} className="flex items-center mb-2">
+            <input
+              type="checkbox"
+              name="bodyType"
+              value={item.value}
+              checked={localData.bodyType.includes(item.value)}
+              onChange={handleChange}
+              className="mr-2"
+            />
+            {item.label}
+          </label>
+        ))}
+      </div>
 
-      <label>Energy Levels:</label>
-      <br />
-      <select
-        name="energyLevels"
-        value={localData.energyLevels}
-        onChange={handleChange}
-      >
-        <option value="">Select</option>
-        <option value="High and steady">High and steady</option>
-        <option value="Energetic in bursts">
-          Energetic in bursts, then fatigued
-        </option>
-        <option value="Low and sluggish">Low and sluggish</option>
-        <option value="Unpredictable">It fluctuates unpredictably</option>
-      </select>
-      <br />
+      {/* Energy Levels */}
+      <div className="mb-4">
+        <label className="block font-medium text-gray-700 mb-2">
+          Energy Levels:
+        </label>
+        <select
+          name="energyLevels"
+          value={localData.energyLevels}
+          onChange={handleChange}
+          className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        >
+          <option value="">Select</option>
+          {energyOptions.map((option) => (
+            <option key={option} value={option}>
+              {option}
+            </option>
+          ))}
+        </select>
+      </div>
 
-      <label>Physical/Emotional Concerns (Select up to 3):</label>
-      <br />
-      <label>
-        <input
-          type="checkbox"
-          name="concerns"
-          value="Digestive issues"
-          checked={localData.concerns.includes("Digestive issues")}
-          onChange={handleChange}
-        />{" "}
-        Digestive issues
-      </label>
-      <br />
-      <label>
-        <input
-          type="checkbox"
-          name="concerns"
-          value="Poor sleep"
-          checked={localData.concerns.includes("Poor sleep")}
-          onChange={handleChange}
-        />{" "}
-        Poor sleep or insomnia
-      </label>
-      <br />
-      <label>
-        <input
-          type="checkbox"
-          name="concerns"
-          value="Stress"
-          checked={localData.concerns.includes("Stress")}
-          onChange={handleChange}
-        />{" "}
-        Stress, anxiety, irritability
-      </label>
-      <br />
-      <label>
-        <input
-          type="checkbox"
-          name="concerns"
-          value="Weight management"
-          checked={localData.concerns.includes("Weight management")}
-          onChange={handleChange}
-        />{" "}
-        Weight management
-      </label>
-      <br />
-      <label>
-        <input
-          type="checkbox"
-          name="concerns"
-          value="Skin issues"
-          checked={localData.concerns.includes("Skin issues")}
-          onChange={handleChange}
-        />{" "}
-        Skin issues
-      </label>
-      <br />
-      <label>
-        <input
-          type="checkbox"
-          name="concerns"
-          value="Frequent colds"
-          checked={localData.concerns.includes("Frequent colds")}
-          onChange={handleChange}
-        />{" "}
-        Frequent colds or congestion
-      </label>
-      <br />
+      {/* Concerns */}
+      <div className="mb-6">
+        <label className="block font-medium text-gray-700 mb-2">
+          Physical/Emotional Concerns:
+        </label>
+        {concernsOptions.map((concern) => (
+          <label key={concern} className="flex items-center mb-2">
+            <input
+              type="checkbox"
+              name="concerns"
+              value={concern}
+              checked={localData.concerns.includes(concern)}
+              onChange={handleChange}
+              className="mr-2"
+            />
+            {concern}
+          </label>
+        ))}
+      </div>
 
-      <button onClick={handleNext}>Next</button>
+      {/* Next Button */}
+      <div className="flex justify-end">
+        <button
+          onClick={handleNext}
+          className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-md transition"
+        >
+          Next
+        </button>
+      </div>
     </div>
   );
 }
