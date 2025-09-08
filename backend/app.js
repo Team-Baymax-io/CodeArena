@@ -19,10 +19,16 @@ app.use(cookieParser());
 
 //import router
 import userRouter from "./routes/user.routes.js";
-import chatRouter from "./routes/chat.routes.js";
+// import chatRouter from "./routes/chat.routes.js";
+import formRoutes from "./routes/form.routes.js";
+import profileRoutes from "./routes/profile.routes.js";
+import trackingsRouter from "./routes/tracking.routes.js";
 
 //user routes
-app.use("/api/v1/user", userRouter);
-app.use("/api/v2", chatRouter);
+app.use("/api/user", userRouter);
+// app.use("/api/v2", chatRouter);
+app.use("/api/form", formRoutes);
+app.use("/api/profile", profileRoutes);
+app.use("/api/tracking", trackingsRouter);
 
 export { app };
