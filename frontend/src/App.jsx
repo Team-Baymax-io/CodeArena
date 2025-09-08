@@ -8,6 +8,8 @@ import { Error, Outline, Feature, Product } from "./components";
 import Contact from "./pages/Contact";
 import About from "./pages/About";
 import FormCard from "./pages/FormCard";
+import Apointments from "./pages/Apointments";
+import CheckupData from "./pages/CheckUps";
 
 function PrivateRoute({ children }) {
   const { state } = useAuth();
@@ -26,6 +28,8 @@ export default function App() {
           {/* <Route path="Products" element={<Product />} /> */}
           <Route path="Contact" element={<Contact />} />
           <Route path="About" element={<About />} />
+          <Route path="Checkups" element={<CheckupData />} />
+          <Route path="Apo" element={<Apointments />} />
           <Route path="*" element={<Error />} />
 
           <Route
