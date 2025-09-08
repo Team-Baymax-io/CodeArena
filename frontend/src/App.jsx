@@ -1,4 +1,4 @@
-import { Routes, Route, Navigate, Form } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "./context/authContext";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
@@ -19,21 +19,28 @@ export default function App() {
     <AuthProvider>
       <Routes>
         <Route path="/" element={<Outline />}>
-          <Route path="/" element={<Home />} />
+          <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="Technology" element={<Feature />} />
-          <Route path="Products" element={<Product />} />
+          {/* <Route path="Products" element={<Product />} /> */}
           <Route path="Contact" element={<Contact />} />
           <Route path="About" element={<About />} />
-          <Route path="Form" element={<FormCard />} />
           <Route path="*" element={<Error />} />
 
           <Route
-            path="/dashboard"
+            path="dashboard"
             element={
               <PrivateRoute>
                 <Dashboard />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="Form"
+            element={
+              <PrivateRoute>
+                <FormCard />
               </PrivateRoute>
             }
           />

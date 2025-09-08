@@ -21,7 +21,7 @@ export default function Header() {
           </div>
           <nav>
             <ul className="flex flex-wrap justify-center space-x-3 md:space-x-6">
-              {["Products", "Technology", "About", "Contact"].map((item) => (
+              {["Form", "Technology", "About", "Contact"].map((item) => (
                 <li key={item}>
                   <Link
                     to={`/${item}`}

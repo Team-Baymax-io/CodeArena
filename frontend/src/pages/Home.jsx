@@ -1,12 +1,13 @@
 import React from "react";
-import { Header, Footer, Hero, Feature, Product } from "../components/index";
+import { Hero, Feature } from "../components/index";
+import FormCard from "./FormCard";
 
 const Home = () => {
   return (
     <>
       <Hero />
       <Feature />
-      <Product />
+      <FormCard />
     </>
   );
 };
