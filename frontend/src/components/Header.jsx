@@ -21,18 +21,16 @@ export default function Header() {
           </div>
           <nav>
             <ul className="flex flex-wrap justify-center space-x-3 md:space-x-6">
-              {["Home", "Products", "Technology", "About", "Contact"].map(
-                (item) => (
-                  <li key={item}>
-                    <a
-                      href={`/${item}`}
-                      className="text-blue-700 font-semibold hover:text-green-600 transition-colors"
-                    >
-                      {item}
-                    </a>
-                  </li>
-                )
-              )}
+              {["Products", "Technology", "About", "Contact"].map((item) => (
+                <li key={item}>
+                  <Link
+                    to={`/${item}`}
+                    className="text-blue-700 font-semibold hover:text-green-600 transition-colors"
+                  >
+                    {item}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
           {/* search bar */}
